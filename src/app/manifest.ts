@@ -10,52 +10,52 @@ export default function manifest(): MetadataRoute.Manifest {
     background_color: "#ffffff",
     icons: [
       {
-        src: "favicon.ico",
+        src: "/icons/hippo-email-sent.png",
         sizes: "48x48",
         type: "image/png",
       },
       {
-        src: "favicon.ico",
+        src: "/icons/hippo-email-sent.png",
         sizes: "72x72",
         type: "image/png",
       },
       {
-        src: "favicon.ico",
+        src: "/icons/hippo-email-sent.png",
         sizes: "96x96",
         type: "image/png",
       },
       {
-        src: "favicon.ico",
+        src: "/icons/hippo-email-sent.png",
         sizes: "128x128",
         type: "image/png",
       },
       {
-        src: "favicon.ico",
+        src: "/icons/hippo-email-sent.png",
         sizes: "144x144",
         type: "image/png",
       },
       {
-        src: "favicon.ico",
+        src: "/icons/hippo-email-sent.png",
         sizes: "152x152",
         type: "image/png",
       },
       {
-        src: "favicon.ico",
+        src: "/icons/hippo-email-sent.png",
         sizes: "192x192",
         type: "image/png",
       },
       {
-        src: "favicon.ico",
+        src: "/icons/hippo-email-sent.png",
         sizes: "256x256",
         type: "image/png",
       },
       {
-        src: 'favicon.ico',
+        src: '/icons/hippo-email-sent.png',
         sizes: "384x384",
         type: "image/png",
       },
       {
-        src: 'favicon.ico',
+        src: '/icons/hippo-email-sent.png',
         sizes: "512x512",
         type: "image/png",
       },
