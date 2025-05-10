@@ -18,16 +18,15 @@ interface LoginFormInputs {
 }
 
 const Page = () => {
-  
   const mutation = useLogin();
   /**
    * Uses the `useLogin` custom hook to perform a login mutation.
-   * 
+   *
    * The `useLogin` hook is likely a wrapper around a React Query mutation
    * that handles the login process. By calling `mutate`, you can trigger
    * the login mutation, which will send a request to the server to log in
    * the user with the provided credentials.
-   * 
+   *
    * React Query's `mutate` function is used to perform side effects such as
    * making API calls. It provides features like automatic retries, caching,
    * and synchronization with the server state.
@@ -52,7 +51,10 @@ const Page = () => {
             Iniciar sesión en tu cuenta
           </h1>
           <Link
-            className={buttonVariants({ variant: "link", className: "gap-1.5"})}
+            className={buttonVariants({
+              variant: "link",
+              className: "gap-1.5",
+            })}
             href="/register"
           >
             Crear una cuenta
@@ -73,11 +75,7 @@ const Page = () => {
                 validationRules={requiredPasswordValidationRules}
                 error={errors.password?.message}
               />
-              <Button
-                type="submit"
-                isLoading={mutation.isPending}
-                className="w-full"
-              >
+              <Button type="submit" className="w-full">
                 {mutation.isPending ? "Iniciando sesión..." : "Iniciar sesión"}
               </Button>
             </div>
