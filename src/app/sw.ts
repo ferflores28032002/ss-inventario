@@ -14,7 +14,7 @@ const customRuntimeCaching = [
   ...defaultCache,
   {
     matcher:
-      /^https:\/\/(hipo-inventario\.com|cdn\.hipo-inventario\.com)\/.*\.(js|css|png|jpg|svg|woff2?)$/i,
+      /^https:\/\/(hipo-inventario\.netlify\.app|cdn\.hipo-inventario\.com)\/.*\.(js|css|png|jpg|svg|woff2?)$/i,
     handler: new CacheFirst({
       cacheName: "static-resources",
       plugins: [
