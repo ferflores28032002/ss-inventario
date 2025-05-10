@@ -9,10 +9,10 @@ const config = {
     "./src/**/*.{ts,tsx}",
   ],
   safelist: [
-    'text-canceled',
-    'text-inProgress',
-    'text-completed',
-    'text-pending',
+    "text-canceled",
+    "text-inProgress",
+    "text-completed",
+    "text-pending",
   ],
   prefix: "",
   theme: {
@@ -25,10 +25,10 @@ const config = {
     },
     extend: {
       colors: {
-        canceled: "#EF4444", // Cancelada (Rojo)
-        inProgress: "#3B82F6", // En progreso (Azul)
-        completed: "#22C55E", // Completada (Verde)
-        pending: "#EAB308", // Pendiente (Amarillo)
+        canceled: "#EF4444",
+        inProgress: "#3B82F6",
+        completed: "#22C55E",
+        pending: "#EAB308",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -62,6 +62,16 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        sidebar: {
+          DEFAULT: "hsl(var(--sidebar-background))",
+          foreground: "hsl(var(--sidebar-foreground))",
+          primary: "hsl(var(--sidebar-primary))",
+          "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
+          accent: "hsl(var(--sidebar-accent))",
+          "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
+          border: "hsl(var(--sidebar-border))",
+          ring: "hsl(var(--sidebar-ring))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -70,12 +80,20 @@ const config = {
       },
       keyframes: {
         "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
+          from: {
+            height: "0",
+          },
+          to: {
+            height: "var(--radix-accordion-content-height)",
+          },
         },
         "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
+          from: {
+            height: "var(--radix-accordion-content-height)",
+          },
+          to: {
+            height: "0",
+          },
         },
       },
       animation: {

@@ -1,41 +1,36 @@
 "use client";
 
-import { Suspense } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-import { Loading } from "@/components";
+import Link from "next/link";
+
 import { Button } from "@/components/ui/button";
 
-import { usePasswordChange } from "@/hooks/auth/usePasswordChange";
-
+import EmailInput from "@/components/EmailInputField";
+import NameInput from "@/components/NameInput";
 import PasswordInput from "@/components/PasswordInput";
+
+import { useRegisterUser } from "@/hooks/auth/useRegisterUser";
+
 import { Icons } from "@/icons";
 
-interface ChangePasswordFormInputs {
+interface RegisterFormInputs {
+  name: string;
+  email: string;
   password: string;
 }
 
-const PasswordChangePage: React.FC = () => {
-  const mutation = usePasswordChange();
-  const searchParams = useSearchParams();
-  const router = useRouter();
+const Page = () => {
+  const mutation = useRegisterUser();
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<ChangePasswordFormInputs>();
+  } = useForm<RegisterFormInputs>();
 
-  const token = searchParams.get("token");
-
-  if (!token) {
-    router.push("/login");
-    return null;
-  }
-
-  const onSubmit: SubmitHandler<ChangePasswordFormInputs> = async (data) => {
-    await mutation.mutate({ newPassword: data.password, token });
+  const onSubmit: SubmitHandler<RegisterFormInputs> = async (data) => {
+    await mutation.mutate(data);
   };
 
   return (
@@ -44,29 +39,42 @@ const PasswordChangePage: React.FC = () => {
         <div className="flex flex-col items-center space-y-2 text-center">
           <Icons.logo className="h-20 w-20" />
           <h1 className="text-2xl font-semibold tracking-tight">
-            Ingresa tu nueva contraseña
+            Crea una cuenta
           </h1>
         </div>
 
         <div className="grid gap-6">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="grid gap-2">
+              <NameInput
+                register={register}
+                error={errors.name?.message}
+                name="name"
+              />
+              <EmailInput
+                register={register}
+                error={errors.email?.message}
+                name="email"
+              />
               <PasswordInput
                 name="password"
                 register={register}
                 error={errors.password?.message}
               />
-              <Button
-                type="submit"
-                isLoading={mutation.isPending}
-                className="w-full"
-              >
-                {mutation.isPending
-                  ? "Cambiando contraseña..."
-                  : "Cambiar contraseña"}
+              <Button type="submit" className="w-full">
+                {mutation.isPending ? "Creando cuenta..." : "Crear cuenta"}
               </Button>
             </div>
           </form>
+
+          <div className="flex justify-center mt-2">
+            <Link
+              href="/login"
+              className="text-sm text-blue-500 hover:underline"
+            >
+              ¿Ya tienes una cuenta?
+            </Link>
+          </div>
 
           <div className="relative mb-36">
             <div
@@ -82,10 +90,4 @@ const PasswordChangePage: React.FC = () => {
   );
 };
 
-export default function Page() {
-  return (
-    <Suspense fallback={<Loading />}>
-      <PasswordChangePage />
-    </Suspense>
-  );
-}
+export default Page;
